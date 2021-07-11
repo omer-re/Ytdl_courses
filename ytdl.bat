@@ -1,1 +1,1 @@
-python C:\Users\omer.reuveni\PycharmProjects\Productivity_scripts\ffmpeg_related\ytdl_courses_script\ytdl_courses_script.py
+python <PATH TO SCRIPT>\ytdl_courses_script.py
