@@ -25,15 +25,15 @@ PATH=os.getcwd()
 try:
     # Try calling ABC here anyway you like
     # Here I am just printing it
-	os.system('youtube-dl.exe')
+	command = 'youtube-dl.exe --version'
+    subprocess.check_call(shlex.split(command),stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
 except NameError:
     print("Variable youtube-dl.exe does not exist")
-	if os.path.isfile("youtube-dl.exe"):    # case youtube-dl isn't on ENVIRONMENT VARIABLES but is in the folder
+    if os.path.isfile("youtube-dl.exe"):    # case youtube-dl isn't on ENVIRONMENT VARIABLES but is in the folder
 	    YTDL_PATH=os.path.abspath("youtube-dl.exe")
-	else:
+    else:
 	    print("You are missing youtube-dl.exe or it isn't configured in your environment path properly.\nPlease fix and try again.")
 	    exit(0)
-
 
 os.chdir(PATH)
 YTDL_PATH=""
@@ -64,9 +64,9 @@ for i, line in enumerate(lines):
 	if (len(line)<5): # ignore empty lines
 	    continue
 	if len(YTDL_PATH)>0:  # case youtube-dl isn't on ENVIRONMENT VARIABLES but is in the folder
-		newlines.append('{} --newline -i -f mp4 --ignore-config --hls-prefer-native "{}" -o {}_{}.mp4\n'.format(YTDL_PATH,str(lines[i].strip()),NAME_OF_COURSE,i))
+		newlines.append('{} -i -f mp4 --ignore-config --hls-prefer-native "{}" -o {}_{}.mp4\n'.format(YTDL_PATH,str(lines[i].strip()),NAME_OF_COURSE,i))
 	else:  # best case- youtube-dl is installed properly.
-	    newlines.append('youtube-dl.exe --newline -i -f mp4 --ignore-config --hls-prefer-native "{}" -o {}_{}.mp4\n'.format(str(lines[i].strip()),NAME_OF_COURSE,i))
+	    newlines.append('youtube-dl.exe -i -f mp4 --ignore-config --hls-prefer-native "{}" -o {}_{}.mp4\n'.format(str(lines[i].strip()),NAME_OF_COURSE,i))
 
 # Create bat file for easy sharing	
 output_filename="URL_list_for_{}.bat".format(NAME_OF_COURSE)
