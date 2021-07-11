@@ -32,6 +32,7 @@ except NameError:
     print("Variable youtube-dl.exe does not exist")
     if os.path.isfile("youtube-dl.exe"):  # case youtube-dl isn't on ENVIRONMENT VARIABLES but is in the folder
         YTDL_PATH = os.path.abspath("youtube-dl.exe")
+        os.system('setx youtube-dl {}'.format(YTDL_PATH)) # set youtube-dl to environment path
     else:
         print(
             "You are missing youtube-dl.exe or it isn't configured in your environment path properly.\nPlease fix and try again.")
