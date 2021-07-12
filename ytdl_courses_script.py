@@ -4,21 +4,39 @@ import subprocess
 # check if tqdm exists, otherwise install it
 import sys
 import subprocess
-import pkg_resources
 import shlex
+
+def install_and_import(package):
+    import importlib
+    try:
+        importlib.import_module(package)
+    except ImportError:
+        import pip
+        pip.main(['install', package])
+    finally:
+        globals()[package] = importlib.import_module(package)
+
+
 
 
 ## check if all required components available: ##
-installed = {pkg.key for pkg in pkg_resources.working_set}
 
-if 'tqdm' not in installed:
-    python = sys.executable
-    subprocess.check_call([python, '-m', 'pip', 'install', 'tqdm'], stdout=subprocess.DEVNULL)
+install_and_import('tqdm')
 
-else:
-    print('TQDM exists')
+# ## old alternative
+# import pkg_resources
+# installed = {pkg.key for pkg in pkg_resources.working_set}
+#
+# if 'tqdm' not in installed:
+#     python = sys.executable
+#     subprocess.check_call([python, '-m', 'pip', 'install', 'tqdm'], stdout=subprocess.DEVNULL)
+#
+# else:
+#     print('TQDM exists')
+#
+# import tqdm
+# ##
 
-import tqdm
 
 PATH = os.getcwd()
 
