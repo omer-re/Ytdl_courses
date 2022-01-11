@@ -7,6 +7,6 @@
 #### I WILL NOT BE RESPONSIBLE FOR ANY COMPLAINT OR CONSEQUENCE OF USING THIS TOOL 
 
 # How to use?
-<a href="https://github.com/omer-re/Ytdl_courses/raw/main/YTDL%20tutorial.mp4">
+<a href="https://youtu.be/1h2pfSiHNko">
    <img src="https://i.imgur.com/DGQMCO5.png" width="500" />
 </a>
